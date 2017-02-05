@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/04 17:42:17 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/04 17:44:50 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,14 @@ void getenvvar(t_vector *vect, char *str)
 	int i;
 
 	i = 0;
-	//ft_putendl(subof(str,1));
 	while (i < (int)vect->size)
 	{
-		//ft_putendl("here");
-		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str)) == 0)
+		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str) - 1) == 0)
 		{
 			ft_putendl(subof(*(char **)vectspot(i, vect),ft_strlen(str)));
 			return;
 		}
-		//ft_putendl(*(char **)vectspot(i, vect));
 		i++;
-		//if (i < (int)vect->size)
-		//ft_putchar('\n');
 	}
 }
 
