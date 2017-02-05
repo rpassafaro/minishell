@@ -57,6 +57,24 @@ void vect_insert(t_vector *vect, size_t index, void *data)
 	vect->size += 1;
 }
 
+void decreasevect(t_vector *vect)
+{
+	vect->data = realloc(vect->data, vect->capacity / 2);
+	vect->capacity = vect->capacity / 2;
+}
+
+void vect_delete(t_vector *vect, size_t index)
+{
+	size_t ref;
+
+	ref = index * vect->itemsize;
+	memmove(vect->data + ref, vect->data + (ref + vect->itemsize),
+	(vect->size * vect->itemsize) - ref);
+	if (vect->size - 1 <= vect->capacity / 4)
+		decreasevect(vect);
+	vect->size = 1;
+}
+
 void col_vect(t_vector *vect)
 {
 	vect->size -= 1;

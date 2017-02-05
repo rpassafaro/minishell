@@ -2,7 +2,7 @@ CC =	gcc
 
 FLAG =	-Wall -Wextra -Werror -o
 
-NAME =	get_next_line
+NAME =	minishell
 
 SRCS =	libft/ft_putchar.c \
 		libft/ft_putstr.c \
@@ -57,7 +57,10 @@ SRCS =	libft/ft_putchar.c \
 		libft/ft_putendl_fd.c \
 		libft/ft_putnbr_fd.c \
 		srcs/vector.c \
-		srcs/get_next_line.c \
+		srcs/minishell.c \
+		srcs/runbin.c \
+		srcs/vector.c \
+		srcs/env.c \
 
 OBJS =	$(NAME)
 

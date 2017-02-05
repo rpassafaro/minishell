@@ -1,5 +1,5 @@
-#include "vector.h"
-#include "./libft/libft.h"
+#include "../headers/vector.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 
 char *subof(char *str, int sub)
@@ -32,26 +32,26 @@ char **getbins(t_vector *vect)
 	return (NULL);
 }
 
-int main(int argc, char **argv, char** envp)
-{
-	char *str;
-	char** env;
-	char **bin;
-	t_vector *vect;
-	vect = vect_new(10, sizeof(char*));
-
-	if (argc < 0)
-		;
-	if (argv)
-		;
-	storeenv(vect, envp);
-	bin = getbins(vect);
-	int i;
-
-	i = 0;
-	while (bin[i])
-	{
-		printf("%s\n", bin[i]);
-		i++;
-	}
-}
+// int main(int argc, char **argv, char** envp)
+// {
+// 	char *str;
+// 	char** env;
+// 	char **bin;
+// 	t_vector *vect;
+// 	vect = vect_new(10, sizeof(char*));
+//
+// 	if (argc < 0)
+// 		;
+// 	if (argv)
+// 		;
+// 	storeenv(vect, envp);
+// 	bin = getbins(vect);
+// 	int i;
+//
+// 	i = 0;
+// 	while (bin[i])
+// 	{
+// 		printf("%s\n", bin[i]);
+// 		i++;
+// 	}
+// }

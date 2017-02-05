@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/03 21:56:52 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/04 17:42:17 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/get_next_line.h"
+#include "../headers/minishell.h"
 #include "../libft/libft.h"
 #include "../headers/vector.h"
 #include <stdio.h>
@@ -24,8 +25,8 @@ char	*read_tmp()
 	vect = vect_new(10, sizeof(char*));
 
 	str1 = ft_strnew(BUFF_SIZE);
+	ret = ft_strnew(1);
 	bytes_read = 0;
-	ft_putstr("$> ");
 	while (ft_strchr(ret, '\n') == NULL)
 	{
 		vect_insert(vect, vect->size, &str1);
@@ -39,19 +40,55 @@ char	*read_tmp()
 		else
 			ret = ft_strdup(str1);
 	}
-	col_vect(vect);
+	//col_vect(vect);
+	ret[bytes_read - 1] = '\0';
 	return (ret);
 }
 
-int main()
+void getenvvar(t_vector *vect, char *str)
+{
+	int i;
+
+	i = 0;
+	//ft_putendl(subof(str,1));
+	while (i < (int)vect->size)
+	{
+		//ft_putendl("here");
+		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str)) == 0)
+		{
+			ft_putendl(subof(*(char **)vectspot(i, vect),ft_strlen(str)));
+			return;
+		}
+		//ft_putendl(*(char **)vectspot(i, vect));
+		i++;
+		//if (i < (int)vect->size)
+		//ft_putchar('\n');
+	}
+}
+
+
+int main(int argc, char **argv, char** envp)
 {
 	char *str;
+	t_vector *vect;
 
+	if (argc < 0)
+		;
+	if (argv)
+		;
+	vect = vect_new(32, sizeof(char*));
+	storeenv(vect, envp);
 	while(1)
 	{
+		ft_putstr("$> ");
 		str = read_tmp();
-		printf("%s", str);
-		ft_bzero(str, ft_strlen(str));
+		if(str[0] == '$')
+			getenvvar(vect, str);
+		else
+		{
+			ft_putstr("rsh: command not found: ");
+			ft_putendl(str);
+		}
 	}
 	return 0;
 }

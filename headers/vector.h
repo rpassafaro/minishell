@@ -19,4 +19,6 @@ void increasevect(t_vector *vect);
 void *vectspot(size_t index, t_vector *vect);
 void vect_insert(t_vector *vect, size_t index, void *data);
 void col_vect(t_vector *vect);
+void decreasevect(t_vector *vect);
+void vect_delete(t_vector *vect, size_t index);
 #endif
