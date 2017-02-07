@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/05 22:49:05 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/06 18:33:24 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ char *checkbin(char *prog, char *path)
 	re = ft_strjoin(path, "/");
 	test = ft_strjoin(re, prog);
 	free(re);
-	if (stat(test, &sb) == -1)
+	if (lstat(test, &sb) == -1)
 	{
 		free(test);
 		return (NULL);
 	}
 	else
 	{
-		return test;
+		if ((sb.st_mode & S_IFMT) == S_IFREG)
+			return test;
 	}
+	return(NULL);
 }
 
 int countarray(char **lst)
@@ -52,12 +54,14 @@ char	*read_tmp()
 	char	*str1;
 	int		bytes_read;
 	char	*ret;
+	int		dq;
 	t_vector *vect;
-	vect = vect_new(10, sizeof(char*));
 
+	vect = vect_new(10, sizeof(char*));
 	str1 = ft_strnew(BUFF_SIZE);
 	ret = ft_strnew(1);
 	bytes_read = 0;
+	dq = 0;
 	while (ft_strchr(ret, '\n') == NULL)
 	{
 		vect_insert(vect, vect->size, &str1);
@@ -94,15 +98,15 @@ void getenvvar(t_vector *vect, char *str)
 
 void runprog(char *test)
 {
-	//ft_putendl("here");
 	int status;
 	int pid;
+	ft_putendl(test);
 	pid = fork();
 	if (pid == 0){
 	    int err;
 	    char *env[1] = { 0 };
-	    char *argv[3] = { test ,0 };
-	    err = execve(test, argv);  //syscall, libc has simpler wrappers (man exec)
+	    char *argv[3] = { test, 0 };
+	    err = execve(test, argv, env);  //syscall, libc has simpler wrappers (man exec)
 	    exit(err); //if it got here, it's an error
 	}
 	else if(pid < 0)
@@ -119,34 +123,36 @@ void runprog(char *test)
 int checkloc(char *test, int size)
 {
 	struct stat sb;
-	if (stat(test, &sb) == -1)
+	if (lstat(test, &sb) == -1)
+	{
 		return (size);
+	}
 	else
 		runprog(test);
 		return (-1);
 }
 
 
-void execprog(char *str, char **bins)
+int execprog(char *str, char **bins)
 {
 	int size;
 	char *test;
 
 	size = countarray(bins);
-	//printf("%d\n", size);
 	size--;
 	size = checkloc(str, size);
 	while (size > -1)
 	{
 		test = checkbin(str, bins[size]);
-		if (test)
+		if (test != NULL)
 		{
 			runprog(test);
-			return;
+			return 1;
 		}
 		else
 			size--;
 	}
+	return 0;
 }
 
 
@@ -165,13 +171,16 @@ int main(int argc, char **argv, char** envp)
 	{
 		ft_putstr("$> ");
 		str = read_tmp();
+		//ft_putendl(str);
 		if(str[0] == '$')
 			getenvvar(vect, str);
 		else
 		{
-			execprog(str, getbins(vect));
-			// ft_putstr("rsh: command not found: ");
-			// ft_putendl(str);
+			if(!execprog(str, getbins(vect)))
+			{
+				ft_putstr("rsh: command not found: ");
+				ft_putendl(str);
+			}
 		}
 	}
 	return 0;
