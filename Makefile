@@ -56,7 +56,11 @@ SRCS =	libft/ft_putchar.c \
 		libft/ft_putstr_fd.c \
 		libft/ft_putendl_fd.c \
 		libft/ft_putnbr_fd.c \
-		env.c
+		srcs/env.c \
+		srcs/minishell.c \
+		srcs/runbin.c \
+		srcs/utils.c \
+		srcs/vector.c \
 
 OBJS =	$(NAME)
 
