@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../headers/vector.h"
+#include "../headers/minishell.h"
 
 void storeenv(t_vector *vect , char **envp)
 {
