@@ -15,6 +15,21 @@ void storeenv(t_vector *vect , char **envp)
 	vect->size -= 1;
 }
 
+void getenvvar(t_vector *vect, char *str)
+{
+	int i;
+
+	i = 0;
+	while (i < (int)vect->size)
+	{
+		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str) - 1) == 0)
+		{
+			ft_putendl(subof(*(char **)vectspot(i, vect),ft_strlen(str)));
+			return;
+		}
+		i++;
+	}
+}
 // int main(int argc, char **argv, char** envp)
 // {
 // 	char *str;

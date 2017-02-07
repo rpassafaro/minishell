@@ -19,4 +19,6 @@ char *subof(char *str, int sub);
 char **getbins(t_vector *vect);
 int execprog(char *str, char **bins);
 int countarray(char **lst);
+char *checkbin(char *prog, char *path);
+void getenvvar(t_vector *vect, char *str);
 #endif

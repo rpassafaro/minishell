@@ -1,22 +1,7 @@
-#include "../headers/vector.h"
+#include "../headers/minishell.h"
 #include "../libft/libft.h"
 #include <stdio.h>
 
-char *subof(char *str, int sub)
-{
-	int i;
-	char *ret;
-
-	i = 0;
-	ret = ft_strnew(ft_strlen(str) - sub);
-	while (str[sub])
-	{
-		ret[i] = str[sub];
-		i++;
-		sub++;
-	}
-	return(ret);
-}
 
 char **getbins(t_vector *vect)
 {
@@ -32,6 +17,27 @@ char **getbins(t_vector *vect)
 	return (NULL);
 }
 
+char *checkbin(char *prog, char *path)
+{
+	char *test;
+	char *re;
+	struct stat sb;
+
+	re = ft_strjoin(path, "/");
+	test = ft_strjoin(re, prog);
+	free(re);
+	if (lstat(test, &sb) == -1)
+	{
+		free(test);
+		return (NULL);
+	}
+	else
+	{
+		if ((sb.st_mode & S_IFMT) == S_IFREG)
+			return test;
+	}
+	return(NULL);
+}
 // int main(int argc, char **argv, char** envp)
 // {
 // 	char *str;

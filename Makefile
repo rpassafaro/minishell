@@ -61,6 +61,7 @@ SRCS =	libft/ft_putchar.c \
 		srcs/runbin.c \
 		srcs/utils.c \
 		srcs/vector.c \
+		srcs/exec.c \
 
 OBJS =	$(NAME)
 

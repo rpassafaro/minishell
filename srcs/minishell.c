@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/06 22:23:03 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/06 23:24:50 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,6 @@
 #include "../headers/vector.h"
 #include <stdio.h>
 
-char *checkbin(char *prog, char *path)
-{
-	char *test;
-	char *re;
-	struct stat sb;
-
-	re = ft_strjoin(path, "/");
-	test = ft_strjoin(re, prog);
-	free(re);
-	if (lstat(test, &sb) == -1)
-	{
-		free(test);
-		return (NULL);
-	}
-	else
-	{
-		if ((sb.st_mode & S_IFMT) == S_IFREG)
-			return test;
-	}
-	return(NULL);
-}
-
-int countarray(char **lst)
-{
-	int i;
-
-	i = 0;
-	while (lst[i])
-		i++;
-
-	return (i);
-}
 
 char	*read_tmp()
 {
@@ -79,80 +47,6 @@ char	*read_tmp()
 	return (ret);
 }
 
-void getenvvar(t_vector *vect, char *str)
-{
-	int i;
-
-	i = 0;
-	while (i < (int)vect->size)
-	{
-		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str) - 1) == 0)
-		{
-			ft_putendl(subof(*(char **)vectspot(i, vect),ft_strlen(str)));
-			return;
-		}
-		i++;
-	}
-}
-
-void runprog(char *test)
-{
-	int status;
-	int pid;
-	ft_putendl(test);
-	pid = fork();
-	if (pid == 0){
-	    int err;
-	    char *env[1] = { 0 };
-	    char *argv[3] = { test, 0 };
-	    err = execve(test, argv, env);  //syscall, libc has simpler wrappers (man exec)
-	    exit(err); //if it got here, it's an error
-	}
-	else if(pid < 0)
-	{
-	    printf("fork failed with error code %d\n", pid);
-	    exit(-1);
-	}
-
-	wait(&status); //simplest one, man wait for others
-	free (test);
-	printf("child pid was %d, it exited with %d\n", pid, status);
-}
-
-int checkloc(char *test, int size)
-{
-	struct stat sb;
-	if (lstat(test, &sb) == -1)
-	{
-		return (size);
-	}
-	else
-		runprog(test);
-		return (-1);
-}
-
-
-int execprog(char *str, char **bins)
-{
-	int size;
-	char *test;
-
-	size = countarray(bins);
-	size--;
-	size = checkloc(str, size);
-	while (size > -1)
-	{
-		test = checkbin(str, bins[size]);
-		if (test != NULL)
-		{
-			runprog(test);
-			return 1;
-		}
-		else
-			size--;
-	}
-	return 0;
-}
 
 
 int main(int argc, char **argv, char** envp)
@@ -170,7 +64,6 @@ int main(int argc, char **argv, char** envp)
 	{
 		ft_putstr("$> ");
 		str = read_tmp();
-		//ft_putendl(str);
 		if(str[0] == '$')
 			getenvvar(vect, str);
 		else
