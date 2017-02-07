@@ -6,11 +6,10 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/06 18:33:24 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/06 22:23:03 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/get_next_line.h"
 #include "../headers/minishell.h"
 #include "../libft/libft.h"
 #include "../headers/vector.h"
