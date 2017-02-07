@@ -51,9 +51,9 @@ void vect_insert(t_vector *vect, size_t index, void *data)
 	if (vect->size == vect->capacity)
 		increasevect(vect);
 	ref = index * vect->itemsize;
-	memmove(vect->data + (ref + vect->itemsize), vect->data + ref,
+	ft_memmove(vect->data + (ref + vect->itemsize), vect->data + ref,
 	(vect->size * vect->itemsize) - ref);
-	memcpy(vect->data + ref, data, vect->itemsize);
+	ft_memcpy(vect->data + ref, data, vect->itemsize);
 	vect->size += 1;
 }
 
@@ -68,7 +68,7 @@ void vect_delete(t_vector *vect, size_t index)
 	size_t ref;
 
 	ref = index * vect->itemsize;
-	memmove(vect->data + ref, vect->data + (ref + vect->itemsize),
+	ft_memmove(vect->data + ref, vect->data + (ref + vect->itemsize),
 	(vect->size * vect->itemsize) - ref);
 	if (vect->size - 1 <= vect->capacity / 4)
 		decreasevect(vect);

@@ -33,7 +33,7 @@ int checkloc(char *test, int size)
 	}
 	else
 		runprog(test);
-		return (-1);
+	return (-1);
 }
 
 
@@ -50,11 +50,13 @@ int execprog(char *str, char **bins)
 		test = checkbin(str, bins[size]);
 		if (test != NULL)
 		{
+			freedub(bins);
 			runprog(test);
 			return 1;
 		}
 		else
 			size--;
 	}
+	freedub(bins);
 	return 0;
 }

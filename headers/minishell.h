@@ -21,4 +21,10 @@ int execprog(char *str, char **bins);
 int countarray(char **lst);
 char *checkbin(char *prog, char *path);
 void getenvvar(t_vector *vect, char *str);
+int inputsize(char *str);
+int trimsome(char *str, int i);
+char		*my_word_builder(char const *str, unsigned int *index);
+char			**my_ft_strsplit(char const *s);
+void freedub(char **str);
+char **parseinput(char *str);
 #endif

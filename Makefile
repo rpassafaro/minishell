@@ -62,6 +62,8 @@ SRCS =	libft/ft_putchar.c \
 		srcs/utils.c \
 		srcs/vector.c \
 		srcs/exec.c \
+		srcs/input.c \
+		srcs/mysplit.c \
 
 OBJS =	$(NAME)
 
