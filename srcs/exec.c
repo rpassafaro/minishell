@@ -1,16 +1,15 @@
 #include "../headers/minishell.h"
 
-void runprog(char *test)
+void runprog(char *test, char **temp)
 {
 	int status;
 	int pid;
-	ft_putendl(test);
+	//ft_putendl(test);
 	pid = fork();
 	if (pid == 0){
 	    int err;
 	    char *env[1] = { 0 };
-	    char *argv[3] = { test, 0 };
-	    err = execve(test, argv, env);  //syscall, libc has simpler wrappers (man exec)
+	    err = execve(test, temp, env);  //syscall, libc has simpler wrappers (man exec)
 	    exit(err); //if it got here, it's an error
 	}
 	else if(pid < 0)
@@ -24,7 +23,7 @@ void runprog(char *test)
 	printf("child pid was %d, it exited with %d\n", pid, status);
 }
 
-int checkloc(char *test, int size)
+int checkloc(char *test, int size, char **temp)
 {
 	struct stat sb;
 	if (lstat(test, &sb) == -1)
@@ -32,26 +31,30 @@ int checkloc(char *test, int size)
 		return (size);
 	}
 	else
-		runprog(test);
+		runprog(test, temp);
 	return (-1);
 }
 
 
-int execprog(char *str, char **bins)
+int execprog(char *str, char **bins, char **temp)
 {
 	int size;
 	char *test;
 
 	size = countarray(bins);
 	size--;
-	size = checkloc(str, size);
+	size = checkloc(str, size, temp);
+	if (size == -1)
+		return 1;
 	while (size > -1)
 	{
 		test = checkbin(str, bins[size]);
 		if (test != NULL)
 		{
 			freedub(bins);
-			runprog(test);
+			free(temp[0]);
+			temp[0] = test;
+			runprog(test, temp);
 			return 1;
 		}
 		else
