@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/07 02:38:52 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/07 17:01:18 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int main(int argc, char **argv, char** envp)
 {
 	char *str;
 	t_vector *vect;
+	char **temp;
 
 	if (argc < 0)
 		;
@@ -71,10 +72,14 @@ int main(int argc, char **argv, char** envp)
 			if(!execprog(str, getbins(vect)))
 			{
 				//ft_putendl(str);
+				temp = parseinput(str);
+				int i = 0;
+				while(temp[i])
+					printf("%s\n", temp[i++]);
 				// ft_putnbr(inputsize(str));
 				// ft_putchar('\n');
-				ft_putstr("rsh: command not found: ");
-				ft_putendl(str);
+				// ft_putstr("rsh: command not found: ");
+				// ft_putendl(str);
 			}
 		}
 	}

@@ -57,41 +57,45 @@ int inputsize(char *str)
 
 char **parseinput(char *str)
 {
-	str = NULL;
-	// char **temp;
-	// char **retstr;
-	// int i;
-	// int ret;
-	// int dq;
-	// char *fr;
-	//
-	// ret = 0;
-	// i = 0;
-	// dq = 0;
-	// temp = my_ft_strsplit(str);
-	// retstr = (char**)malloc(sizeof(char*) * inputsize(str) + 1);
-	// retstr[inputsize(str)] = 0;
-	// while(temp[i])
-	// {
-	// 	if (ft_strchr(temp[i], '"'))
-	// 	{
-	// 		while(!ft_strchr(temp[i], '"'))
-	// 		{
-	// 			fr = retstr[ret];
-	// 			retstr[ret] = ft_strjoin(temp[i], retstr[ret]);
-	// 			free(fr);
-	// 			i++;
-	// 		}
-	// 		fr = retstr[ret];
-	// 		retstr[ret] = ft_strjoin(temp[i], retstr[ret]);
-	// 		free(fr);
-	// 	}
-	// 	else
-	// 		retstr[ret] = ft_strdup(temp[i]);
-	// 	i++;
-	// 	ret++;
-	// }
-	// freedub(temp);
-	// return retstr;
-	return NULL;
+	char **retstr;
+	int start;
+	int end;
+	int dq;
+	int count;
+	int i;
+
+	count = 0;
+	dq = 0;
+	start = 0;
+	end = 0;
+	retstr = (char**)malloc(sizeof(char*) * (inputsize(str) + 1));
+	retstr[inputsize(str)] = 0;
+	while(count < inputsize(str))
+	{
+		while(str[start] < 33)
+			start++;
+		end = start;
+		while (str[end] > 32 || dq)
+		{
+			if (str[end] == '"' && dq)
+			{
+				dq = 0;
+			}
+			else if (str[end] == '"' && !dq)
+			{
+				dq = 1;
+			}
+			end++;
+		}
+		retstr[count] = ft_strnew(end - start);
+		i = 0;
+		while (start < end)
+		{
+			retstr[count][i] = str[start];
+			start++;
+			i++;
+		}
+		count++;
+	}
+	return retstr;
 }
