@@ -72,7 +72,7 @@ void vect_delete(t_vector *vect, size_t index)
 	(vect->size * vect->itemsize) - ref);
 	if (vect->size - 1 <= vect->capacity / 4)
 		decreasevect(vect);
-	vect->size = 1;
+	vect->size -= 1;
 }
 
 void col_vect(t_vector *vect)

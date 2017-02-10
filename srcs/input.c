@@ -64,6 +64,8 @@ char **parseinput(char *str)
 	int count;
 	int i;
 
+	if (NULL == ft_strchr(str,'"'))
+		return(ft_strsplit(str, ' '));
 	count = 0;
 	dq = 0;
 	start = 0;
@@ -91,6 +93,7 @@ char **parseinput(char *str)
 		i = 0;
 		while (start < end)
 		{
+			ft_putchar(str[start]);
 			retstr[count][i] = str[start];
 			start++;
 			i++;

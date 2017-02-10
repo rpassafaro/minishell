@@ -9,7 +9,8 @@ int runbuilt(char **temp, t_vector *vect)
 	}
 	if (ft_strcmp(temp[0], "cd") == 0)
 	{
-		changedirs(temp[1], vect);
+		if (temp[1])
+			changedirs(temp[1], vect);
 		return 1;
 	}
 	return 0;

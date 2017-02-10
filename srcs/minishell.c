@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/09 20:04:16 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/09 21:04:47 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int argc, char **argv, char** envp)
 		ft_putstr("$> ");
 		str = read_tmp();
 		temp = parseinput(str);
-		checkenv(temp, vect);
+		//checkenv(temp, vect);
 		// if(str[0] == '$')
 		// 	getenvvar(vect, str);
 		// else
