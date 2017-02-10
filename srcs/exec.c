@@ -4,23 +4,19 @@ void runprog(char *test, char **temp)
 {
 	int status;
 	int pid;
-	//ft_putendl(test);
+	int err;
 	pid = fork();
 	if (pid == 0){
-	    int err;
-	    char *env[1] = { 0 };
-	    err = execve(test, temp, env);  //syscall, libc has simpler wrappers (man exec)
-	    exit(err); //if it got here, it's an error
+	    err = execve(test, temp, NULL);
+	    exit(err);
 	}
 	else if(pid < 0)
 	{
 	    printf("fork failed with error code %d\n", pid);
 	    exit(-1);
 	}
-
-	wait(&status); //simplest one, man wait for others
+	wait(&status);
 	free (test);
-	printf("child pid was %d, it exited with %d\n", pid, status);
 }
 
 int checkloc(char *test, int size, char **temp)

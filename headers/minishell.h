@@ -28,4 +28,8 @@ char			**my_ft_strsplit(char const *s);
 void freedub(char **str);
 char **parseinput(char *str);
 void runprog(char *test, char **temp);
+void getenvvar(t_vector *vect, char *str);
+void getenv_b(t_vector *vect);
+char* dupenvvar(t_vector *vect, char *str);
+void checkenv(char **temp, t_vector *vect);
 #endif

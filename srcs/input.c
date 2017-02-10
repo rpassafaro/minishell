@@ -99,3 +99,20 @@ char **parseinput(char *str)
 	}
 	return retstr;
 }
+
+void checkenv(char **temp, t_vector *vect)
+{
+	int i;
+	char *str;
+
+	i = 0;
+	while (temp[i])
+	{
+		if ((str = dupenvvar(vect, temp[i])))
+		{
+			free(temp[i]);
+			temp[i] = str;
+		}
+		i++;
+	}
+}
