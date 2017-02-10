@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 # include <fcntl.h>
 # include <sys/uio.h>
+# include <limits.h>
 # include <sys/types.h>
 #include "../libft/libft.h"
 #include "vector.h"
@@ -32,4 +33,8 @@ void getenvvar(t_vector *vect, char *str);
 void getenv_b(t_vector *vect);
 char* dupenvvar(t_vector *vect, char *str);
 void checkenv(char **temp, t_vector *vect);
+int runbuilt(char **temp, t_vector *vect);
+char *findenvvar(t_vector *vect, char *str);
+void changedirs(char *path, t_vector *vect);
+int findenvvarint(t_vector *vect, char *str);
 #endif

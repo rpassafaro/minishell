@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/09 17:32:02 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/09 20:04:16 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ int main(int argc, char **argv, char** envp)
 		// 	getenvvar(vect, str);
 		// else
 		// {
-		if(!execprog(temp[0], getbins(vect), temp))
+		if (runbuilt(temp, vect))
+		{
+			;
+		}
+		else if(!execprog(temp[0], getbins(vect), temp))
 		{
 			ft_putstr("unknown command rsh: ");
 			ft_putendl(temp[0]);
