@@ -80,7 +80,10 @@ void col_vect(t_vector *vect)
 	vect->size -= 1;
 	while((int)vect->size >= 0)
 	{
-		free(*(char **)vectspot(vect->size, vect));
+		//free(*(char **)vectspot(vect->size, vect));
+		ft_putendl("here");
+		vect_delete(vect, vect->size);
 		vect->size--;
 	}
+	free(vect);
 }
