@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/09 21:04:47 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/13 22:10:26 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*read_tmp()
 }
 
 
-
 int main(int argc, char **argv, char** envp)
 {
 	char *str;
@@ -61,17 +60,11 @@ int main(int argc, char **argv, char** envp)
 		;
 	vect = vect_new(32, sizeof(char*));
 	storeenv(vect, envp);
-	// getenv_b(vect);
 	while(1)
 	{
 		ft_putstr("$> ");
 		str = read_tmp();
 		temp = parseinput(str);
-		//checkenv(temp, vect);
-		// if(str[0] == '$')
-		// 	getenvvar(vect, str);
-		// else
-		// {
 		if (runbuilt(temp, vect))
 		{
 			;
@@ -81,7 +74,6 @@ int main(int argc, char **argv, char** envp)
 			ft_putstr("unknown command rsh: ");
 			ft_putendl(temp[0]);
 		}
-		//}
 	}
 	freedub(temp);
 	return 0;

@@ -38,4 +38,5 @@ char *findenvvar(t_vector *vect, char *str);
 void changedirs(char *path, t_vector *vect);
 int findenvvarint(t_vector *vect, char *str);
 void setenv_b(char *key, char *val, t_vector *vect);
+void unsetenv_b(char *key, t_vector *vect);
 #endif

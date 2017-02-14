@@ -19,5 +19,11 @@ int runbuilt(char **temp, t_vector *vect)
 			setenv_b(temp[1], temp[2], vect);
 		return 1;
 	}
+	if (ft_strcmp(temp[0], "unsetenv") == 0)
+	{
+		if (temp[1])
+			unsetenv_b(temp[1], vect);
+		return 1;
+	}
 	return 0;
 }
