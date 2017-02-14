@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/13 22:10:26 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/13 23:03:22 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ char	*read_tmp()
 }
 
 
-int main(int argc, char **argv, char** envp)
+int main(int argc, char **argv, char **envp)
 {
 	char *str;
 	t_vector *vect;
 	char **temp;
+	int ret;
 
 	if (argc < 0)
 		;
@@ -65,9 +66,11 @@ int main(int argc, char **argv, char** envp)
 		ft_putstr("$> ");
 		str = read_tmp();
 		temp = parseinput(str);
-		if (runbuilt(temp, vect))
+		ret = runbuilt(temp, vect);
+		if (ret == 1 || ret == -1)
 		{
-			;
+			if (ret == -1)
+				break;
 		}
 		else if(!execprog(temp[0], getbins(vect), temp))
 		{
@@ -76,5 +79,6 @@ int main(int argc, char **argv, char** envp)
 		}
 	}
 	freedub(temp);
+	exit(0);
 	return 0;
 }

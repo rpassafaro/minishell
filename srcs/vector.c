@@ -35,6 +35,7 @@ int vectsize(t_vector *vect)
 void increasevect(t_vector *vect)
 {
 	vect->data = realloc(vect->data, ((vect->capacity * vect->itemsize) * 2));
+	vect->capacity = vect->capacity * 2;
 }
 
 void *vectspot(size_t index, t_vector *vect)

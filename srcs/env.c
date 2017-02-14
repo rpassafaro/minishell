@@ -4,15 +4,16 @@
 void storeenv(t_vector *vect , char **envp)
 {
 	char** env;
+	char* thisEnv;
 
 	env = envp;
 	while (*env != 0)
 	{
-		char* thisEnv = *env;
+		thisEnv = *env;
 		vect_insert(vect, vect->size, &thisEnv);
 		env++;
 	}
-	vect->size -= 1;
+	//vect->size -= 1;
 }
 
 void getenvvar(t_vector *vect, char *str)
