@@ -25,6 +25,12 @@ int runbuilt(char **temp, t_vector *vect)
 			unsetenv_b(temp[1], vect);
 		return 1;
 	}
+	if (ft_strcmp(temp[0], "echo") == 0)
+	{
+		if (temp[1])
+			echo_b(temp);
+		return 1;
+	}
 	if (ft_strcmp(temp[0], "exit") == 0 || ft_strcmp(temp[0], "EXIT") == 0)
 	{
 		return -1;

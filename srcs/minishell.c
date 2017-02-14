@@ -66,6 +66,7 @@ int main(int argc, char **argv, char **envp)
 		ft_putstr("$> ");
 		str = read_tmp();
 		temp = parseinput(str);
+		checkenv(temp, vect);
 		ret = runbuilt(temp, vect);
 		if (ret == 1 || ret == -1)
 		{
