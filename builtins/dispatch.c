@@ -13,5 +13,11 @@ int runbuilt(char **temp, t_vector *vect)
 			changedirs(temp[1], vect);
 		return 1;
 	}
+	if (ft_strcmp(temp[0], "setenv") == 0)
+	{
+		if (temp[1])
+			setenv_b(temp[1], temp[2], vect);
+		return 1;
+	}
 	return 0;
 }

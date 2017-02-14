@@ -7,7 +7,7 @@ char **getbins(t_vector *vect)
 {
 	int i;
 
-	i = vect->size;
+	i = vect->size - 1;
 	while (i > -1)
 	{
 		if (ft_strncmp(*(char **)vectspot(i, vect), "PATH=",4) == 0)

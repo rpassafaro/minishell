@@ -46,16 +46,19 @@ char* dupenvvar(t_vector *vect, char *str)
 	}
 	return NULL;
 }
-// int main(int argc, char **argv, char** envp)
-// {
-// 	char *str;
-// 	char** env;
-// 	t_vector *vect;
-// 	vect = vect_new(10, sizeof(char*));
-//
-// 	if (argc < 0)
-// 		;
-// 	if (argv)
-// 		;
-// 	storeenv(vect, envp);
-// }
+
+int findenvvarint(t_vector *vect, char *str)
+{
+	int i;
+
+	i = 0;
+	while (i < (int)vect->size)
+	{
+		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,0), ft_strlen(str) - 1) == 0)
+		{
+			return i;
+		}
+		i++;
+	}
+	return (-1);
+}
