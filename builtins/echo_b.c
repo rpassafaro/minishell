@@ -1,6 +1,6 @@
 #include "../headers/minishell.h"
 
-void printend(int x, int nflag)
+void	printend(int x, int nflag)
 {
     if (x == 1 && nflag)
         ft_putendl("%");
@@ -8,7 +8,7 @@ void printend(int x, int nflag)
         ft_putchar('\n');
 }
 
-int nflagfind(char *temp)
+int		nflagfind(char *temp)
 {
     int i;
 
@@ -22,7 +22,7 @@ int nflagfind(char *temp)
 	return 0;
 }
 
-void echo_b(char **temp)
+void	echo_b(char **temp)
 {
     int i;
     int x;
@@ -38,7 +38,6 @@ void echo_b(char **temp)
     }
     while (temp[i])
     {
-        ft_putendl("here");
         ft_putstr(temp[i]);
         i++;
         if (temp[i])

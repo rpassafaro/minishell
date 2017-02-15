@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/14 18:50:45 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/14 20:06:49 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int main(int argc, char **argv, char **envp)
 			if (ret == -1)
 				break;
 		}
-		else if(!execprog(temp[0], getbins(vect), temp))
+		else if(temp[0] && !execprog(temp[0], getbins(vect), temp))
 		{
 			ft_putstr("unknown command rsh: ");
 			ft_putendl(temp[0]);

@@ -34,7 +34,6 @@ void setenv_b(char *key, char *val, t_vector *vect)
 	}
 	else
 		vect_insert(vect, vect->size, &data);
-	printf("%s\n%zu\n%zu\n%s\n", data, vect->size, vect->capacity, "here");
 }
 
 void unsetenv_b(char *key, t_vector *vect)
