@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../headers/minishell.h"
 
-void storeenv(t_vector *vect , char **envp)
+void	storeenv(t_vector *vect , char **envp)
 {
 	char** env;
 	char* thisEnv;
@@ -11,13 +11,12 @@ void storeenv(t_vector *vect , char **envp)
 	{
 		thisEnv = *env;
 		vect_insert(vect, vect->size, &thisEnv);
-		ft_putendl(thisEnv);
 		env++;
 	}
 	vect->size -= 1;
 }
 
-void getenvvar(t_vector *vect, char *str)
+void	getenvvar(t_vector *vect, char *str)
 {
 	int i;
 
@@ -33,7 +32,7 @@ void getenvvar(t_vector *vect, char *str)
 	}
 }
 
-char* dupenvvar(t_vector *vect, char *str)
+char	*dupenvvar(t_vector *vect, char *str)
 {
 	int i;
 
@@ -47,7 +46,7 @@ char* dupenvvar(t_vector *vect, char *str)
 	return NULL;
 }
 
-int findenvvarint(t_vector *vect, char *str)
+int		findenvvarint(t_vector *vect, char *str)
 {
 	int i;
 
