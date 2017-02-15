@@ -1,6 +1,27 @@
 #include "../headers/vector.h"
 #include "../libft/libft.h"
 
+void *ft_realloc(void *ptr, size_t size)
+
+{
+	char *ret;
+
+	if (!size && ptr)
+	{
+		if (!(ret = (char*)malloc(1)))
+			return (NULL);
+		ft_memdel(&ptr);
+		return (ret);
+	}
+	ret = (char*)malloc(size);
+	if (ptr)
+	{
+		ft_memcpy(ret, ptr, size);
+		ft_memdel(&ptr);
+	}
+	return (ret);
+}
+
 t_vector *vect_new(size_t count, size_t size)
 {
 	t_vector *vect;
@@ -34,7 +55,7 @@ int vectsize(t_vector *vect)
 
 void increasevect(t_vector *vect)
 {
-	vect->data = realloc(vect->data, ((vect->capacity * vect->itemsize) * 2));
+	vect->data = ft_realloc(vect->data, ((vect->capacity * vect->itemsize) * 2));
 	vect->capacity = vect->capacity * 2;
 }
 
@@ -60,7 +81,8 @@ void vect_insert(t_vector *vect, size_t index, void *data)
 
 void decreasevect(t_vector *vect)
 {
-	vect->data = realloc(vect->data, vect->capacity / 2);
+	vect->data = ft_realloc(vect->data,
+		((vect->capacity * vect->itemsize) / 2));
 	vect->capacity = vect->capacity / 2;
 }
 

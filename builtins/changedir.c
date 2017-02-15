@@ -47,7 +47,6 @@ void	gohome(t_vector *vect, char *cwd)
 	i = findenvvarint(vect, "OLDPWD");
 	str = findenvvar(vect, "HOME");
 	tmp = subof(str, 5);
-	ft_putendl(tmp);
 	free (str);
 	ret = chdir(tmp);
 	free (tmp);

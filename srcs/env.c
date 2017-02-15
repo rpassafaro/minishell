@@ -53,7 +53,7 @@ int		findenvvarint(t_vector *vect, char *str)
 	i = 0;
 	while (i < (int)vect->size)
 	{
-		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,0), ft_strlen(str) - 1) == 0)
+		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,0), ft_strlen(str)) == 0)
 			return i;
 		i++;
 	}

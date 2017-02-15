@@ -26,9 +26,12 @@ void setenv_b(char *key, char *val, t_vector *vect)
 	char *data;
 
 	index = findenvvarint(vect, key);
+	ft_putnbr(index);
+	ft_putchar('\n');
 	data = makedata(key,val);
 	if (index > -1)
 	{
+		ft_putendl("here");
 		vect_delete(vect, index);
 		vect_insert(vect, index, &data);
 	}
