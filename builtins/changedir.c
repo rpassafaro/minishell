@@ -1,6 +1,6 @@
 #include "../headers/minishell.h"
 
-char *findenvvar(t_vector *vect, char *str)
+char	*findenvvar(t_vector *vect, char *str)
 {
 	int i;
 
@@ -16,7 +16,7 @@ char *findenvvar(t_vector *vect, char *str)
 	return (NULL);
 }
 
-void goback(t_vector *vect, char *cwd)
+void	goback(t_vector *vect, char *cwd)
 {
 	char *str;
 	char *tmp;
@@ -34,11 +34,10 @@ void goback(t_vector *vect, char *cwd)
 	{
 		vect_delete(vect, i);
 		str = ft_strjoin("OLDPWD=", cwd);
-		//free diss
 		vect_insert(vect, i, &str);
 	}
 }
-void gohome(t_vector *vect, char *cwd)
+void	gohome(t_vector *vect, char *cwd)
 {
 	char *str;
 	char *tmp;
@@ -56,12 +55,11 @@ void gohome(t_vector *vect, char *cwd)
 	{
 		vect_delete(vect, i);
 		str = ft_strjoin("OLDPWD=", cwd);
-		//free diss
 		vect_insert(vect, i, &str);
 	}
 }
 
-void changedirs(char *path, t_vector *vect)
+void	changedirs(char *path, t_vector *vect)
 {
 	int ret;
 	char *str;

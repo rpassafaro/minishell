@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/14 20:06:49 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/14 20:30:22 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int main(int argc, char **argv, char **envp)
 	storeenv(vect, envp);
 	while(1)
 	{
-		ft_putstr("$> ");
+		// ft_putstr("$> ");
+		print_interp();
 		str = read_tmp();
 		temp = parseinput(str);
 		checkenv(temp, vect);

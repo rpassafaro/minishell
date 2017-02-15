@@ -68,6 +68,7 @@ SRCS =	libft/ft_putchar.c \
 		builtins/dispatch.c \
 		builtins/changedir.c \
 		builtins/echo_b.c \
+		gui_addons/interpreter.c \
 
 OBJS =	$(NAME)
 
