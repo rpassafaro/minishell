@@ -34,6 +34,29 @@ void goback(t_vector *vect, char *cwd)
 	{
 		vect_delete(vect, i);
 		str = ft_strjoin("OLDPWD=", cwd);
+		//free diss
+		vect_insert(vect, i, &str);
+	}
+}
+void gohome(t_vector *vect, char *cwd)
+{
+	char *str;
+	char *tmp;
+	int ret;
+	int i;
+
+	i = findenvvarint(vect, "OLDPWD");
+	str = findenvvar(vect, "HOME");
+	tmp = subof(str, 5);
+	ft_putendl(tmp);
+	free (str);
+	ret = chdir(tmp);
+	free (tmp);
+	if (ret == 0)
+	{
+		vect_delete(vect, i);
+		str = ft_strjoin("OLDPWD=", cwd);
+		//free diss
 		vect_insert(vect, i, &str);
 	}
 }
@@ -47,6 +70,11 @@ void changedirs(char *path, t_vector *vect)
 	char buff[PATH_MAX + 1];
 
 	cwd = getcwd(buff, PATH_MAX + 1);
+	if (path == NULL)
+	{
+		gohome(vect,cwd);
+		return;
+	}
 	if (ft_strcmp(path,"-") == 0)
 	{
 		goback(vect, cwd);

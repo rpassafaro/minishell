@@ -9,8 +9,12 @@ int runbuilt(char **temp, t_vector *vect)
 	}
 	if (temp[0] && ft_strcmp(temp[0], "cd") == 0)
 	{
-		if (temp[1])
+		if (temp[1] == NULL)
+			changedirs(NULL, vect);
+		else if (temp[1] && temp[2] == NULL)
 			changedirs(temp[1], vect);
+		else
+			ft_putendl("to many arguments in cd");
 		return 1;
 	}
 	if (temp[0] && ft_strcmp(temp[0], "setenv") == 0)
@@ -32,8 +36,6 @@ int runbuilt(char **temp, t_vector *vect)
 		return 1;
 	}
 	if (temp[0] && (ft_strcmp(temp[0], "exit") == 0 || ft_strcmp(temp[0], "EXIT") == 0))
-	{
 		return -1;
-	}
 	return 0;
 }
