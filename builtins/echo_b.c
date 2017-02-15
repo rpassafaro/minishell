@@ -19,6 +19,7 @@ int nflagfind(char *temp)
             return 1;
         i++;
     }
+	return 0;
 }
 
 void echo_b(char **temp)

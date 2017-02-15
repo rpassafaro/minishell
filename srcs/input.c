@@ -100,6 +100,7 @@ char **parseinput(char *str)
 		}
 		count++;
 	}
+	free(str);
 	return retstr;
 }
 
