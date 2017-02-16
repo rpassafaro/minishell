@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib.h                                           :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 10:28:16 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/04 16:55:15 by rpassafa         ###   ########.fr       */
+/*   Updated: 2017/02/16 00:45:06 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-
-typedef	struct s_list
-{
-	void		*content;
-	size_t 		content_size;
-	struct		s_list *next;
-}				t_list;
 
 void			*ft_memalloc(size_t size);
 void			*ft_memset(void *dest, int value, size_t bytes);
