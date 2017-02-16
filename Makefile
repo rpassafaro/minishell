@@ -61,8 +61,10 @@ SRCS =	libft/ft_putchar.c \
 		srcs/runbin.c \
 		srcs/utils.c \
 		srcs/vector.c \
+		srcs/readtmp.c \
 		srcs/exec.c \
 		srcs/input.c \
+		srcs/input_a.c \
 		srcs/mysplit.c \
 		builtins/b_env.c \
 		builtins/dispatch.c \
