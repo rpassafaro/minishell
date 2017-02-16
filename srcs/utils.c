@@ -1,6 +1,5 @@
 #include "../headers/minishell.h"
 
-
 char *subof(char *str, int sub)
 {
 	int i;

@@ -24,6 +24,12 @@ int countthis(char *str)
 	return count;
 }
 
+void setints(int *ret, int *i, int *dq)
+{
+	*ret = 0;
+	*i = 0;
+	*dq = 0;
+}
 int inputsize(char *str)
 {
 	char **temp;
@@ -31,9 +37,7 @@ int inputsize(char *str)
 	int ret;
 	int dq;
 
-	ret = 0;
-	i = 0;
-	dq = 0;
+	setints(&ret, &i, &dq);
 	temp = my_ft_strsplit(str);
 	while(temp[i])
 	{
@@ -62,7 +66,6 @@ void setstruct(t_parse *thing)
 	thing->dq = 0;
 	thing->count = 0;
 	thing->i = 0;
-
 }
 
 void parse_a(t_parse *m_parse, char *str)
