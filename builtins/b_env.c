@@ -5,11 +5,27 @@ void	getenv_b(t_vector *vect)
 	int i;
 
 	i = 0;
-	while (i < (int)vect->size)
+	while (i <= (int)vect->size)
 	{
 		ft_putendl(*(char **)vectspot(i, vect));
 		i++;
 	}
+}
+
+char	**cpenv_b(t_vector *vect)
+{
+	int i;
+	char **ret;
+
+	ret = (char**)malloc(sizeof(char*) * vect->size + 2);
+	i = 0;
+	while (i <= (int)vect->size)
+	{
+		ret[i] = ft_strdup(*(char **)vectspot(i, vect));
+		i++;
+	}
+	ret[i] = 0;
+	return ret;
 }
 
 char	*makedata(char *key, char *val)
