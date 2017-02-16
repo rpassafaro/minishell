@@ -118,14 +118,14 @@ void	changedirs(char *path, t_vector *vect)
 	char buff[PATH_MAX + 1];
 
 	cwd = getcwd(buff, PATH_MAX + 1);
-	if (path[0] == '~')
-	{
-		ft_til(vect, path, cwd);
-		return;
-	}
 	if (path == NULL)
 	{
 		gohome(vect,cwd);
+		return;
+	}
+	if (path[0] == '~')
+	{
+		ft_til(vect, path, cwd);
 		return;
 	}
 	if (ft_strcmp(path,"-") == 0)

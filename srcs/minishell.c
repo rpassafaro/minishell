@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/15 12:44:24 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/15 22:12:04 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int main(int argc, char **argv, char **envp)
 			ft_putendl(temp[0]);
 		}
 	}
-	freedub(temp);
 	exit(0);
 	return 0;
 }
