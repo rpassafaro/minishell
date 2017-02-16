@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mysplit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/16 00:25:31 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/16 00:25:33 by rpassafa         ###   ########.us       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/minishell.h"
 
 char		*my_word_builder(char const *str, unsigned int *index)
@@ -38,7 +50,7 @@ char			**my_ft_strsplit(char const *s)
 	words = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] > 32 && (s[i + 1] <=32 || s[i + 1] == '\0'))
+		if (s[i] > 32 && (s[i + 1] <= 32 || s[i + 1] == '\0'))
 			words++;
 		i++;
 	}
