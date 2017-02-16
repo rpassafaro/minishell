@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 23:45:24 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/15 23:45:28 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/16 00:13:11 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	storeenv(t_vector *vect, char **envp)
 		vect_insert(vect, vect->size, &thisenv);
 		env++;
 	}
-	vect->size -= 1;
 }
 
 void	getenvvar(t_vector *vect, char *str)

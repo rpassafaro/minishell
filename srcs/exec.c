@@ -1,30 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/16 00:07:51 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/16 00:08:01 by rpassafa         ###   ########.us       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/minishell.h"
 
-void runprog(char *test, char **temp, t_vector *vect)
+void	runprog(char *test, char **temp, t_vector *vect)
 {
-	int status;
-	int pid;
-	int err;
-	char **env;
+	int		status;
+	int		pid;
+	int		err;
+	char	**env;
 
 	env = cpenv_b(vect);
 	pid = fork();
-	if (pid == 0){
-	    err = execve(test, temp, env);
-	}
-	else if(pid < 0)
+	if (pid == 0)
+		err = execve(test, temp, env);
+	else if (pid < 0)
 	{
-	    printf("fork failed with error code %d\n", pid);
-	    exit(-1);
+		ft_putstr("fork failed with error code ");
+		ft_putnbr(pid);
+		ft_putchar('\n');
+		exit(-1);
 	}
 	signal(SIGINT, NULL);
 	wait(&status);
-	free (test);
+	free(test);
 }
 
-int checkloc(char *test, int size, char **temp, t_vector *vect)
+int		checkloc(char *test, int size, char **temp, t_vector *vect)
 {
 	struct stat sb;
+
 	if (lstat(test, &sb) == -1)
 	{
 		return (size);
@@ -34,16 +48,16 @@ int checkloc(char *test, int size, char **temp, t_vector *vect)
 	return (-1);
 }
 
-int execprog(char *str, char **bins, char **temp, t_vector *vect)
+int		execprog(char *str, char **bins, char **temp, t_vector *vect)
 {
-	int size;
-	char *test;
+	int		size;
+	char	*test;
 
 	size = countarray(bins);
 	size--;
 	size = checkloc(str, size, temp, vect);
 	if (size == -1)
-		return 1;
+		return (1);
 	while (size > -1)
 	{
 		test = checkbin(str, bins[size]);
@@ -53,11 +67,11 @@ int execprog(char *str, char **bins, char **temp, t_vector *vect)
 			free(temp[0]);
 			temp[0] = test;
 			runprog(test, temp, vect);
-			return 1;
+			return (1);
 		}
 		else
 			size--;
 	}
 	freedub(bins);
-	return 0;
+	return (0);
 }
