@@ -7,7 +7,7 @@ Objectives:
   Understand how to fork and wait for processes
   Manage and execute successfully from the bin
   recreate system builtins:
-    env
+    \nenv
     cd
     echo
     unsetenv
