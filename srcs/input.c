@@ -91,9 +91,14 @@ char **parseinput(char *str)
 		}
 		retstr[count] = ft_strnew(end - start);
 		i = 0;
+		if (str[start] == '"' && str[ft_strlen(str) - 1] == '"')
+		{
+			start++;
+			end--;
+		}
 		while (start < end)
 		{
-			ft_putchar(str[start]);
+			//ft_putchar(str[start]);
 			retstr[count][i] = str[start];
 			start++;
 			i++;

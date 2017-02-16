@@ -6,6 +6,11 @@ void	printend(int x, int nflag)
         ft_putendl("%");
     else if (x == 1 && !nflag)
         ft_putchar('\n');
+	else if (x == 0 && !nflag)
+	{
+		ft_putchar('\n');
+		ft_putchar('\n');
+	}
 }
 
 int		nflagfind(char *temp)

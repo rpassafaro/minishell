@@ -22,5 +22,5 @@ void print_interp()
 	ft_putstr("[");
 	printfirstpath(cwd);
 	ft_putstr("]");
-	ft_putstr(" (ﾉ^ヮ^)ﾉ*:・ﾟ✧ ");
+	ft_putstr(" ༼ つ ͠° ͟ ͟ʖ ͡° ༽つ > ");
 }
