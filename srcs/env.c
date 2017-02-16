@@ -35,12 +35,18 @@ void	getenvvar(t_vector *vect, char *str)
 char	*dupenvvar(t_vector *vect, char *str)
 {
 	int i;
+	char *tmp;
 
 	i = 0;
 	while (i < (int)vect->size)
 	{
-		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,1), ft_strlen(str)) == 0)
+		tmp = subof(str,1);
+		if (str[0] && str[0] == '$' && ft_strncmp(*(char **)vectspot(i, vect), tmp, ft_strlen(str) - 1) == 0)
+		{
+			free(tmp);
 			return(ft_strdup(subof(*(char **)vectspot(i, vect),ft_strlen(str))));
+		}
+		free(tmp);
 		i++;
 	}
 	return NULL;
@@ -53,7 +59,7 @@ int		findenvvarint(t_vector *vect, char *str)
 	i = 0;
 	while (i < (int)vect->size)
 	{
-		if (ft_strncmp(*(char **)vectspot(i, vect), subof(str,0), ft_strlen(str)) == 0)
+		if (ft_strncmp(*(char **)vectspot(i, vect), str, ft_strlen(str)) == 0)
 			return i;
 		i++;
 	}

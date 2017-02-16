@@ -55,58 +55,59 @@ int inputsize(char *str)
 	return ret;
 }
 
+void setstruct(t_parse *thing)
+{
+	thing->start = 0;
+	thing->end = 0;
+	thing->dq = 0;
+	thing->count = 0;
+	thing->i = 0;
+
+}
+
+void parse_a(t_parse *m_parse, char *str)
+{
+	while(str[m_parse->start] < 33)
+		m_parse->start++;
+	m_parse->end = m_parse->start;
+	while (str[m_parse->end] > 32 || m_parse->dq)
+	{
+		if (str[m_parse->end] == '"' && m_parse->dq)
+			m_parse->dq = 0;
+		else if (str[m_parse->end] == '"' && !m_parse->dq)
+			m_parse->dq = 1;
+		m_parse->end++;
+	}
+	m_parse->retstr[m_parse->count] = ft_strnew(m_parse->end - m_parse->start);
+	m_parse->i = 0;
+	if (str[m_parse->start] == '"' && str[ft_strlen(str) - 1] == '"')
+	{
+		m_parse->start++;
+		m_parse->end--;
+	}
+	while (m_parse->start < m_parse->end)
+	{
+		m_parse->retstr[m_parse->count][m_parse->i] = str[m_parse->start];
+		m_parse->start++;
+		m_parse->i++;
+	}
+	m_parse->count++;
+}
+
 char **parseinput(char *str)
 {
-	char **retstr;
-	int start;
-	int end;
-	int dq;
-	int count;
-	int i;
+	t_parse *m_parse;
 
+	m_parse = malloc(sizeof(t_parse));
+	setstruct(m_parse);
 	if (NULL == ft_strchr(str,'"'))
 		return(ft_strsplit(str, ' '));
-	count = 0;
-	dq = 0;
-	start = 0;
-	end = 0;
-	retstr = (char**)malloc(sizeof(char*) * (inputsize(str) + 1));
-	retstr[inputsize(str)] = 0;
-	while(count < inputsize(str))
-	{
-		while(str[start] < 33)
-			start++;
-		end = start;
-		while (str[end] > 32 || dq)
-		{
-			if (str[end] == '"' && dq)
-			{
-				dq = 0;
-			}
-			else if (str[end] == '"' && !dq)
-			{
-				dq = 1;
-			}
-			end++;
-		}
-		retstr[count] = ft_strnew(end - start);
-		i = 0;
-		if (str[start] == '"' && str[ft_strlen(str) - 1] == '"')
-		{
-			start++;
-			end--;
-		}
-		while (start < end)
-		{
-			//ft_putchar(str[start]);
-			retstr[count][i] = str[start];
-			start++;
-			i++;
-		}
-		count++;
-	}
+	m_parse->retstr = (char**)malloc(sizeof(char*) * (inputsize(str) + 1));
+	m_parse->retstr[inputsize(str)] = 0;
+	while(m_parse->count < inputsize(str))
+		parse_a(m_parse, str);
 	free(str);
-	return retstr;
+	return m_parse->retstr;
 }
 
 void checkenv(char **temp, t_vector *vect)

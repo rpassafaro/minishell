@@ -13,6 +13,16 @@
 # define ENDL '\n'
 # define BUFF_SIZE 1
 
+typedef struct s_parse
+{
+	char **retstr;
+	int start;
+	int end;
+	int dq;
+	int count;
+	int i;
+}			t_parse;
+
 char	*read_tmp();
 void	storeenv(t_vector *vect , char **envp);
 char	*subof(char *str, int sub);

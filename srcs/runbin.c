@@ -38,26 +38,3 @@ char *checkbin(char *prog, char *path)
 	}
 	return(NULL);
 }
-// int main(int argc, char **argv, char** envp)
-// {
-// 	char *str;
-// 	char** env;
-// 	char **bin;
-// 	t_vector *vect;
-// 	vect = vect_new(10, sizeof(char*));
-//
-// 	if (argc < 0)
-// 		;
-// 	if (argv)
-// 		;
-// 	storeenv(vect, envp);
-// 	bin = getbins(vect);
-// 	int i;
-//
-// 	i = 0;
-// 	while (bin[i])
-// 	{
-// 		printf("%s\n", bin[i]);
-// 		i++;
-// 	}
-// }
