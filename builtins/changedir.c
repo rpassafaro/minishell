@@ -16,7 +16,7 @@ char	*findenvvar(t_vector *vect, char *str)
 	return (NULL);
 }
 
-void changeold(int ret, t_vector *vect, char *cwd, int i)
+void	changeold(int ret, t_vector *vect, char *cwd, int i)
 {
 	char *str;
 

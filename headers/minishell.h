@@ -40,6 +40,7 @@ void	setenv_b(char *key, char *val, t_vector *vect);
 void	unsetenv_b(char *key, t_vector *vect);
 void	echo_b(char **temp);
 void	gohome(t_vector *vect, char *cwd);
+void	goback(t_vector *vect, char *cwd);
 void	print_interp();
 char	**cpenv_b(t_vector *vect);
 void	changeold(int ret, t_vector *vect, char *cwd, int i);
