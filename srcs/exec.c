@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 00:07:51 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/16 00:08:01 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/19 16:19:02 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ int		checkloc(char *test, int size, char **temp, t_vector *vect)
 	else
 		runprog(test, temp, vect);
 	return (-1);
+}
+
+int		checklocsp(char *test, char **temp, t_vector *vect)
+{
+	struct stat sb;
+
+	if (lstat(test, &sb) == -1)
+	{
+		return (0);
+	}
+	else
+	{
+		runprog(test, temp, vect);
+		return (1);
+	}
 }
 
 int		execprog(char *str, char **bins, char **temp, t_vector *vect)

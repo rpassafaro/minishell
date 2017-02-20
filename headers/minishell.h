@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 00:38:54 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/16 00:40:52 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/19 16:02:38 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ char			*til_b(char *path, t_vector *vect);
 void			ft_til(t_vector *vect, char *path, char *cwd);
 void			checkenv(char **temp, t_vector *vect);
 char			**parseinput(char *str);
+int				checklocsp(char *test, char **temp, t_vector *vect);
 
 #endif
