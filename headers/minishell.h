@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 00:38:54 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/19 16:02:38 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/20 16:11:10 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/types.h>
 # include "../libft/libft.h"
 # include "vector.h"
+# include <signal.h>
 # define ENDL '\n'
 # define BUFF_SIZE 1
 

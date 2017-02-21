@@ -6,13 +6,13 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 00:25:31 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/16 00:25:33 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/20 18:03:15 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-char		*my_word_builder(char const *str, unsigned int *index)
+char			*my_word_builder(char const *str, unsigned int *index)
 {
 	unsigned	i;
 	unsigned	start;

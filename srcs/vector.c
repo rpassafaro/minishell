@@ -6,14 +6,14 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 00:36:21 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/16 00:36:23 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/20 18:02:58 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/vector.h"
 #include "../libft/libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void			*ft_realloc(void *ptr, size_t size)
 {
 	char *ret;
 
@@ -33,7 +33,7 @@ void	*ft_realloc(void *ptr, size_t size)
 	return (ret);
 }
 
-t_vector	*vect_new(size_t count, size_t size)
+t_vector		*vect_new(size_t count, size_t size)
 {
 	t_vector	*vect;
 	size_t		stat;
@@ -53,17 +53,17 @@ t_vector	*vect_new(size_t count, size_t size)
 	return (vect);
 }
 
-int		vectcap(t_vector *vect)
+int				vectcap(t_vector *vect)
 {
 	return (vect->capacity);
 }
 
-int		vectsize(t_vector *vect)
+int				vectsize(t_vector *vect)
 {
 	return (vect->size);
 }
 
-void	increasevect(t_vector *vect)
+void			increasevect(t_vector *vect)
 {
 	vect->data = ft_realloc(vect->data,
 	((vect->capacity * vect->itemsize) * 2));

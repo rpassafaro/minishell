@@ -6,7 +6,7 @@
 /*   By: rpassafa <rpassafa@student.42.us>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:13:39 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/19 16:22:29 by rpassafa         ###   ########.us       */
+/*   Updated: 2017/02/20 17:59:58 by rpassafa         ###   ########.us       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,6 @@ void	handlearg(int argc, char **argv)
 	if (argv)
 		;
 }
-
-// void	logicrun(int ret, char **temp, t_vector *vect)
-// {
-// 	if (ret == 1 || ret == -1)
-// 		freedub(temp);
-// 	else if (findenvvarint(vect, "PATH") == -1 ||
-// 	(temp[0] && !execprog(temp[0], getbins(vect), temp, vect)))
-// 		nonrun(temp);
-// 	else
-// 		dofree(temp);
-// }
 
 void	logicrun(int ret, char **temp, t_vector *vect)
 {
